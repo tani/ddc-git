@@ -14,7 +14,7 @@ To install this source,
 ```viml
 Plug 'tani/ddc-git'
 
-call ddc#custom#patch_global("sources", ["git-files"])
+call ddc#custom#patch_global("sources", ["git-file"])
 ```
 
 Copyright (c) 2021 TANIGUCHI Masaya. All rights reserved.
