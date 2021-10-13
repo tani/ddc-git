@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021 TANIGUCHI Masaya. All rights reserved.
+ * This work is licensed under the MIT license. git.io/mit-license
+ */
+
 import { BaseSource, Candidate } from "https://lib.deno.dev/x/ddc_vim@v0/types.ts"
 import { GatherCandidatesArguments } from "https://lib.deno.dev/x/ddc_vim@v0/base/source.ts"
 import * as fn from "https://deno.land/x/denops_std@v2.1.1/function/mod.ts"

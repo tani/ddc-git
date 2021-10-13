@@ -10,3 +10,6 @@ Plug 'tani/ddc-gfiles'
 ```
 
 Copyright (c) 2021 TANIGUCHI Masaya. All rights reserved.
+
+This work is licensed under the MIT license.
+git.io/mit-license
