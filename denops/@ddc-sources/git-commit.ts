@@ -8,21 +8,21 @@ import { GatherCandidatesArguments } from "https://lib.deno.dev/x/ddc_vim@v0/bas
 import * as fn from "https://deno.land/x/denops_std@v2.1.1/function/mod.ts"
 import { git } from "../../git.ts"
 
+
 type UserData= Record<string, never>
 type Params = Record<string, never>
 
 export class Source extends BaseSource<Params, UserData> {
   async gatherCandidates(args: GatherCandidatesArguments<Params>) : Promise<Candidate<UserData>[]> {
     const cwd = await fn.getcwd(args.denops) as string
-    const root = await git(cwd, 'rev-parse', '--show-toplevel')
-    if (!root) {
-      return []
-    }
-    const list = await git(root, 'ls-files')
+    const list = await git(cwd, 'log', '--pretty=online')
     if (!list) {
       return []
     }
-    return list.split("\n").map((item) => ({ word: `${root.trim()}/${item.trim()}`}))
+    return list.split("\n").map((item) => {
+      const [id, desc] = item.split(/\s/, 1)
+      return { word: id, menu: desc  }
+    })
   }
   params(): Params {
     return {}

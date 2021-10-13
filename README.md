@@ -7,14 +7,14 @@ https://user-images.githubusercontent.com/5019902/137079242-13f775ca-aecd-420b-8
 
 
 Git managed files completion for ddc.vim
-You can jump any files in git repository with [tani/ddc-fuzzy](https://github.com/tani/ddc-fuzzy). 
+You can jump any files/branches/commits in git repository with [tani/ddc-fuzzy](https://github.com/tani/ddc-fuzzy). 
 
 To install this source,
 
 ```viml
 Plug 'tani/ddc-git'
 
-call ddc#custom#patch_global("sources", ["git-file"])
+call ddc#custom#patch_global("sources", ["git-file", "git-commit", "git-branch"])
 ```
 
 Copyright (c) 2021 TANIGUCHI Masaya. All rights reserved.
