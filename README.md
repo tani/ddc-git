@@ -1,4 +1,4 @@
-# DDC source for git ls-files
+# DDC source for git
 
 
 
@@ -12,9 +12,9 @@ You can jump any files in git repository with [tani/ddc-fuzzy](https://github.co
 To install this source,
 
 ```viml
-Plug 'tani/ddc-gfiles'
+Plug 'tani/ddc-git'
 
-call ddc#custom#patch_global("sources", ["gfile"])
+call ddc#custom#patch_global("sources", ["git-files"])
 ```
 
 Copyright (c) 2021 TANIGUCHI Masaya. All rights reserved.
