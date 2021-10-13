@@ -3,29 +3,36 @@
  * This work is licensed under the MIT license. git.io/mit-license
  */
 
-import { BaseSource, Candidate } from "https://lib.deno.dev/x/ddc_vim@v0/types.ts"
-import { GatherCandidatesArguments } from "https://lib.deno.dev/x/ddc_vim@v0/base/source.ts"
-import * as fn from "https://deno.land/x/denops_std@v2.1.1/function/mod.ts"
-import { git } from "../../git.ts"
+import {
+  BaseSource,
+  Candidate,
+} from "https://lib.deno.dev/x/ddc_vim@v0/types.ts";
+import { GatherCandidatesArguments } from "https://lib.deno.dev/x/ddc_vim@v0/base/source.ts";
+import * as fn from "https://deno.land/x/denops_std@v2.1.1/function/mod.ts";
+import { git } from "../../git.ts";
 
-type UserData= Record<string, never>
-type Params = Record<string, never>
+type UserData = Record<string, never>;
+type Params = Record<string, never>;
 
 export class Source extends BaseSource<Params, UserData> {
-  async gatherCandidates(args: GatherCandidatesArguments<Params>) : Promise<Candidate<UserData>[]> {
-    const cwd = await fn.getcwd(args.denops) as string
-    const root = await git(cwd, 'rev-parse', '--show-toplevel')
+  async gatherCandidates(
+    args: GatherCandidatesArguments<Params>,
+  ): Promise<Candidate<UserData>[]> {
+    const cwd = await fn.getcwd(args.denops) as string;
+    const root = await git(cwd, "rev-parse", "--show-toplevel");
     if (!root) {
-      return []
+      return [];
     }
-    const list = await git(root, 'ls-files')
+    const list = await git(root.trim(), "ls-files");
     if (!list) {
-      return []
+      return [];
     }
-    return list.split("\n").map((item) => ({ word: `${root.trim()}/${item.trim()}`}))
+    return list.split("\n").map((item) => ({
+      word: `${root.trim()}/${item.trim()}`,
+      mark: 'file'
+    }));
   }
   params(): Params {
-    return {}
+    return {};
   }
 }
-

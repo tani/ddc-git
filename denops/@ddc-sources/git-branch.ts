@@ -19,7 +19,8 @@ export class Source extends BaseSource<Params, UserData> {
       return []
     }
     return list.split("\n").map((item) => ({
-      word: item.replace(/\s*\*\s*/, '').trim()
+      word: item.replace(/\s*\*\s*/, '').trim(),
+      mark: 'branch'
     }))
   }
   params(): Params {

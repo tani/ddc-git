@@ -15,13 +15,13 @@ type Params = Record<string, never>
 export class Source extends BaseSource<Params, UserData> {
   async gatherCandidates(args: GatherCandidatesArguments<Params>) : Promise<Candidate<UserData>[]> {
     const cwd = await fn.getcwd(args.denops) as string
-    const list = await git(cwd, 'log', '--pretty=online')
+    const list = await git(cwd, 'log', '--pretty=oneline')
     if (!list) {
       return []
     }
     return list.split("\n").map((item) => {
-      const [id, desc] = item.split(/\s/, 1)
-      return { word: id, menu: desc  }
+      const [id, ...desc] = item.split(" ")
+      return { word: id, mark: 'commit', menu: desc.join(" ") }
     })
   }
   params(): Params {
