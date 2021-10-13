@@ -1,12 +1,20 @@
 # DDC source for git ls-files
 
+
+
+https://user-images.githubusercontent.com/5019902/137079242-13f775ca-aecd-420b-8f96-69400c2a0ffd.mp4
+
+
+
 Git managed files completion for ddc.vim
-You can jump any files in git repository.
+You can jump any files in git repository with [tani/ddc-fuzzy](https://github.com/tani/ddc-fuzzy). 
 
 To install this source,
 
 ```viml
 Plug 'tani/ddc-gfiles'
+
+call ddc#custom#patch_global("sources", ["gfile"])
 ```
 
 Copyright (c) 2021 TANIGUCHI Masaya. All rights reserved.
