@@ -11,7 +11,7 @@ type UserData= Record<string, never>
 type Params = Record<string, never>
 
 async function git(cwd: string, ...args: string[]): Promise<string | null> {
-    const proc = Deno.run({cwd, cmd: ['git', ...args], stdout: "piped"})
+    const proc = Deno.run({cwd, cmd: ['git', ...args], stdout: "piped", stderr: "null"})
     const status = await proc.status()
     if (!status.success) {
       return null
