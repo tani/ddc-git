@@ -43,7 +43,7 @@ export class Source extends BaseSource<Params, UserData> {
     }
     return Promise.resolve(arg.context.input.length);
   }
-  async gatherCandidates(
+  override async gatherCandidates(
     args: GatherCandidatesArguments<Params>,
   ): Promise<Candidate<UserData>[]> {
     const cwd = await fn.getcwd(args.denops) as string;
@@ -56,7 +56,8 @@ export class Source extends BaseSource<Params, UserData> {
       return [];
     }
     return list.split("\n").map((item) => ({
-      word: `${root.trim()}/${item.trim()}`,
+      word: `${root.trim()}/${item.trim()}`.replace(" ", "\\ "),
+      abbr: `${root.trim()}/${item.trim()}`,
       mark: "file",
     }));
   }
