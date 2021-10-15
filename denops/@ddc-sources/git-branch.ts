@@ -53,7 +53,7 @@ export class Source extends BaseSource<Params, UserData> {
     }
     return list.split("\n").map((item) => ({
       word: item.replace(/\s*\*\s*/, "").trim(),
-      mark: "branch",
+      mark: "git-branch",
     }));
   }
   params(): Params {

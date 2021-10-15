@@ -21,7 +21,7 @@ export class Source extends BaseSource<Params, UserData> {
     }
     return list.split("\n").map((item) => {
       const [id, ...desc] = item.split(" ")
-      return { word: id, mark: 'commit', menu: desc.join(" ") }
+      return { word: id, mark: 'git-commit', menu: desc.join(" ") }
     })
   }
   params(): Params {
