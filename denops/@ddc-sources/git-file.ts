@@ -56,8 +56,7 @@ export class Source extends BaseSource<Params, UserData> {
       return [];
     }
     return list.split("\n").map((item) => ({
-      word: `${root.trim()}/${item.trim()}`.replaceAll(" ", "\\ "),
-      abbr: `${root.trim()}/${item.trim()}`,
+      word: `${root.trim()}/${item.trim()}`,
       mark: "git-file",
     }));
   }
